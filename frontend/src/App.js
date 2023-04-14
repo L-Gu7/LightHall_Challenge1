@@ -67,7 +67,7 @@ function App() {
               ))
             }
           </Geographies>
-          {locations.map(l => <Marker coordinates={[l.longitude,l.latitude]}> <circle r={6} fill="#F53" /> </Marker>)}
+          {locations.map(l => <Marker key={locations.findIndex(e=>e.longitude === l.longitude && e.latitude ===l.latitude)} coordinates={[l.longitude,l.latitude]}> <circle r={6} fill="#F53" /> </Marker>)}
         </ComposableMap>
       </div>
     </header>
