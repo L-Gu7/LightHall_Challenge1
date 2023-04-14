@@ -15,3 +15,8 @@
   width: 3em;
   font-size: 30px;
 }
+
+.rsm-svg {
+  min-width: 45vw;
+  min-height: 60vh;
+}
