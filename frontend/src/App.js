@@ -21,7 +21,7 @@ function App() {
     window.localStorage.setItem('count', count);
     async function fetchMap() {
       try {
-        const result = await axios.get(`${url}/`);
+        const result = await axios.get(`${url}`);
         setLocations(result.data.locations);
         setLoaded(true);
       } catch (error) {
@@ -34,7 +34,7 @@ function App() {
   const handleClick = () => {
     if (!disableGeo && !isLocationSent){
       navigator.geolocation.getCurrentPosition((position)=> {
-        axios.post(`${url}/`,{
+        axios.post(`${url}`,{
           location: {"longitude":position.coords.longitude.toFixed(4),"latitude":position.coords.latitude.toFixed(4)}
         })
         .then((response) => {
