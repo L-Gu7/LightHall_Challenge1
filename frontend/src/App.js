@@ -35,7 +35,7 @@ function App() {
     if (!disableGeo && !isLocationSent){
       navigator.geolocation.getCurrentPosition((position)=> {
         axios.post(`${url}`,{
-          location: {"longitude":position.coords.longitude.toFixed(4),"latitude":position.coords.latitude.toFixed(4)}
+          location: {"longitude":position.coords.longitude.toFixed(3),"latitude":position.coords.latitude.toFixed(3)}
         })
         .then((response) => {
           setLocationSent(true);

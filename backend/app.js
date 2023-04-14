@@ -20,9 +20,15 @@ const Click = mongoose.model("Click");
 app.get('/', async (req, res) => {
     try {
         Click.find({}).then(data => {
-            console.log(data);
+            const pairs = new Set();
+            for (const location of data) {
+                const { latitude, longitude } = location;
+                const pair = `${latitude},${longitude}`; // Create a string representation of the pair
+                pairs.add(pair); // Add the pair to the Set
+            }
+            unique_loc =  Array.from(pairs).map(s=>s.split(',')).map(p => ({"latitude":parseFloat(p[0]),"longitude":parseFloat(p[1])}));
             return res.status(200).json({
-                locations: [...new Map(data.map((item) => [item["name"], item])).values()]
+                locations: unique_loc
             });
           }).catch((err) => {
             console.log(err);
